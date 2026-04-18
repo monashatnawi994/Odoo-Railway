@@ -1,0 +1,94 @@
+<!-- <odoo>
+  <record id="view_task_form_inherit_trench_802" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.trench.802</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+
+      <xpath expr="//form" position="inside">
+        <field name="x_project_type" invisible="1"/>
+      </xpath>
+
+      <xpath expr="//notebook" position="inside">
+
+        <page string="Trench / الحفريات" invisible="x_project_type != '802'">
+
+          <group col="1">
+            <field name="x_trench_check_ids" nolabel="1"  attrs="{'readonly':[('x_is_locked','=',True)]}">
+              <tree editable="bottom">
+                <field name="sequence" string="S.No." readonly="1"/>
+                <field name="description_en" string="DESCRIPTION" readonly="1"/>
+                <field name="answer" string="YES / NO"/>
+                <field name="statement" string="البيان" readonly="1"/>
+                <field name="ref_no" string="الرقم" readonly="1"/>
+              </tree>
+            </field>
+          </group>
+
+          <group col="1">
+            <field name="x_trench_remarks" placeholder="Remarks (if any) / ملاحظات إن وجدت"/>
+          </group>
+
+        </page>
+
+      </xpath>
+
+    </field>
+  </record>
+</odoo> -->
+
+<odoo>
+  <record id="view_task_form_inherit_trench_802" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.trench.802</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+      <!-- IMPORTANT: if you use x_project_type in invisible,
+           it MUST exist in the view -->
+      <xpath expr="//form" position="inside">
+        <field name="x_project_type" invisible="1"/>
+        <field name="x_is_locked" invisible="1"/>
+      </xpath>
+
+      <!-- <xpath expr="//notebook" position="inside"> -->
+      <xpath expr="//sheet/notebook" position="inside">
+
+        <page string="Trench / الحفريات" invisible="x_project_type != '802'">
+        <!-- <page string="Trench / الحفريات" invisible="x_project_type != '803'"> -->
+
+          <group col="1">
+            <field name="x_trench_check_ids"
+                   nolabel="1"
+                   options="{'no_create': True, 'no_create_edit': True}">
+              <tree editable="bottom" create="false" delete="false">
+                <field name="sequence" string="S.No." readonly="1"/>
+                <field name="description_en" string="DESCRIPTION" readonly="1"/>
+                <field name="answer" string="YES / NO"/>
+                <field name="statement" string="البيان" readonly="1"/>
+                <field name="ref_no" string="الرقم" readonly="1"/>
+              </tree>
+            </field>
+          </group>
+
+          <group col="1">
+            <field name="x_trench_remarks"
+                   placeholder="Remarks (if any) / ملاحظات إن وجدت"
+                  readonly="x_is_locked"/>
+          </group>
+
+          <group col="1" string="Attachments / مرفقات">
+            <field name="x_trench_attachment_ids"
+                  widget="many2many_binary"
+                  options="{'accepted_file_extensions': 'jpg,jpeg,png,pdf'}"
+                  nolabel="1"/>
+          </group>
+
+        </page>
+
+      </xpath>
+
+    </field>
+  </record>
+</odoo>

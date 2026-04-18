@@ -1,0 +1,192 @@
+<!-- <page string="MINIPILLAR / لوحة التوزيع"
+    attrs="{'invisible':[('x_project_type','!=','802')]}">
+
+  <group string="MINIPILLAR Header / بيانات النموذج" col="4">
+
+    <field name="x_equipment_number" string="رقم المعدة / Equipment number"/>
+    <field name="x_form_date" string="التاريخ / Date"/>
+
+    <field name="x_project_number" string="رقم المشروع / Project Number"/>
+    <field name="x_coordinates" string="الإحداثيات / Coordinates"/>
+
+    <field name="x_consultant_partner_id" string="الاستشاري / Consultant"/>
+    <field name="x_supervisor_user_id" string="مشرف التنفيذ / Site Supervisor"/>
+
+    <field name="x_branch" string="الفرع / Branch"/>
+    <field name="x_non_conformity" string="عدم المطابقة / Non-conformity"/>
+
+  </group>
+
+  <group col="1">
+    <field name="x_minipillar_check_ids" nolabel="1" colspan="2">
+    <tree editable="bottom">
+
+      <field name="code" string="S.No." readonly="1"/>
+
+      <field name="description_en" string="DESCRIPTION" readonly="1"/>
+
+      <field name="answer" string="YES / NO"/>
+
+      <field name="description_ar" string="الوصف (AR)" readonly="1"/>
+
+      <field name="ref_no" string="الرقم" readonly="1"/>
+
+    </tree>
+    </field>
+  </group>
+
+  <group col="4">
+    <field name="x_remarks" nolabel="1" colspan="4" placeholder="ملاحظات / Remarks"/>
+  </group>
+
+</page> -->
+<!-- <odoo>
+  <data>
+    <record id="view_task_form_inherit_qcc_minipillar" model="ir.ui.view">
+      <field name="name">project.task.form.inherit.qcc.minipillar</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//notebook" position="inside">
+
+          <page string="MINIPILLAR / لوحة التوزيع"
+                invisible="x_project_type != '802'">
+
+
+            <group col="1">
+              <field name="x_minipillar_check_ids" nolabel="1" 
+       modifiers='{"invisible": [["x_project_type","!=","802"]] }'/>
+              
+                <tree editable="bottom">
+                  <field name="code" string="S.No." readonly="1"/>
+                  <field name="description_en" string="DESCRIPTION" readonly="1"/>
+                  <field name="answer" string="YES / NO"/>
+                  <field name="description_ar" string="الوصف" readonly="1"/>
+                  <field name="ref_no" string="الرقم" readonly="1"/>
+                </tree>
+              </field>
+            </group>
+
+            <group col="4">
+              <field name="x_remarks" colspan="4" placeholder="ملاحظات / Remarks"/>
+            </group>
+
+          </page>
+
+        </xpath>
+
+      </field>
+    </record>
+  </data>
+</odoo> -->
+
+<!-- 
+<odoo>
+  <data>
+    <record id="view_task_form_inherit_qcc_minipillar" model="ir.ui.view">
+      <field name="name">project.task.form.inherit.qcc.minipillar</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//notebook" position="inside">
+
+          <page string="MINIPILLAR / لوحة التوزيع"
+                invisible="x_project_type != '802'">
+
+            <group col="1">
+              <field name="x_minipillar_check_ids" nolabel="1">
+                <tree editable="bottom">
+                  <field name="code" string="S.No." readonly="1"/>
+                  <field name="description_en" string="DESCRIPTION" readonly="1"/>
+                  <field name="answer" string="YES / NO"/>
+                  <field name="description_ar" string="الوصف" readonly="1"/>
+                  <field name="ref_no" string="الرقم" readonly="1"/>
+                </tree>
+              </field>
+            </group>
+
+            <group col="4">
+              <field name="x_remarks" colspan="4" placeholder="ملاحظات / Remarks"/>
+            </group>
+
+          </page>
+
+        </xpath>
+
+      </field>
+    </record>
+  </data>
+</odoo> -->
+
+
+<odoo>
+  <record id="view_task_form_inherit_qa_tabs" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.qa.tabs</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//form" position="inside">
+        <field name="x_project_type" invisible="1"/>
+        <field name="x_is_locked" invisible="1"/>
+      </xpath>
+
+      <xpath expr="//sheet/notebook" position="inside">
+
+        <!-- 802 MiniPillar -->
+        <page string="MINIPILLAR / لوحة التوزيع" invisible="x_project_type != '802'">
+          <group col="1">
+            <field name="x_minipillar_check_ids" nolabel="1"
+                   options="{'no_create': True, 'no_create_edit': True}">
+              <tree editable="bottom" create="false" delete="false">
+                <field name="sequence" string="Seq" readonly="1"/>
+                <field name="code" string="S.No." readonly="1"/>
+                <field name="description_en" string="DESCRIPTION" readonly="1"/>
+                <field name="answer" string="YES / NO"/>
+                <field name="description_ar" string="الوصف" readonly="1"/>
+                <field name="ref_no" string="الرقم" readonly="1"/>
+              </tree>
+            </field>
+          </group>
+        </page>
+
+        <!-- 803 Trench -->
+        <page string="Trench / الحفريات" invisible="x_project_type != '803'">
+          <group col="1">
+            <field name="x_trench_check_ids" nolabel="1"
+                   options="{'no_create': True, 'no_create_edit': True}">
+              <tree editable="bottom" create="false" delete="false">
+                <field name="sequence" string="S.No." readonly="1"/>
+                <field name="description_en" string="DESCRIPTION" readonly="1"/>
+                <field name="answer" string="YES / NO"/>
+                <field name="statement" string="البيان" readonly="1"/>
+                <field name="ref_no" string="الرقم" readonly="1"/>
+              </tree>
+            </field>
+          </group>
+
+          <group col="1">
+            <field name="x_trench_remarks"
+                   placeholder="Remarks (if any) / ملاحظات إن وجدت"
+                   readonly="x_is_locked"/>
+          </group>
+          
+         <group col="1" string="Attachments / مرفقات">
+            <field name="x_trench_attachment_ids"
+                  widget="many2many_binary"
+                  options="{'accepted_file_extensions': 'jpg,jpeg,png,pdf'}"
+                  nolabel="1"/>
+          </group>
+
+
+
+        </page>
+        
+
+      </xpath>
+
+    </field>
+  </record>
+</odoo>

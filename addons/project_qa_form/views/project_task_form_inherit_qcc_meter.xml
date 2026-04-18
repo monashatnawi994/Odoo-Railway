@@ -1,0 +1,164 @@
+<!-- <odoo>
+  <record id="view_task_form_inherit_qcc_meter" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.qcc.meter</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//div[contains(@class,'oe_title')]" position="after">
+        <group string="QCC Header / بيانات النموذج">
+          <group>
+            <field name="x_project_type"/>
+            <field name="x_execution_duration_days"/>
+            <field name="x_equipment_number"/>
+            <field name="x_project_number"/>
+          </group>
+          <group>
+            <field name="x_coordinates"/>
+            <field name="x_branch"/>
+            <field name="x_consultant_partner_id"/>
+            <field name="x_supervisor_user_id"/>
+            <field name="x_non_conformity"/>
+          </group>
+        </group>
+      </xpath>
+
+      <xpath expr="//notebook" position="inside">
+        <page string="Meter / عداد" attrs="{'invisible':[('x_project_type','!=','801')]}">
+          <group>
+            <field name="x_meter_check_ids" nolabel="1" context="{'default_task_id': active_id}">
+              <tree editable="bottom">
+                <field name="sequence" string="S.No."/>
+                <field name="description_en" string="DESCRIPTION"/>
+                <field name="answer" string="YES/NO"/>
+                <field name="statement" string="Statement / البيان"/>
+                <field name="description_ar" string="الوصف"/>
+              </tree>
+            </field>
+          </group>
+
+          <group>
+            <field name="x_remarks" placeholder="Remarks / ملاحظات..."/>
+          </group>
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+</odoo> -->
+
+
+<!-- <odoo>
+
+  <record id="view_task_form_inherit_qcc_meter" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.qcc.meter</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//div[hasclass('oe_title')]" position="after">
+        <group string="QCC Header / بيانات النموذج">
+          <group>
+            <field name="x_work_order_ref"/>
+            <field name="x_project_type"/>
+            <field name="x_execution_duration_days"/>
+            <field name="x_equipment_number"/>
+            <field name="x_project_number"/>
+          </group>
+          <group>
+            <field name="x_work_region"/>
+            <field name="x_work_site"/>
+            <field name="x_coordinates"/>
+            <field name="x_branch"/>
+            <field name="x_consultant_partner_id"/>
+            <field name="x_supervisor_user_id"/>
+            <field name="x_non_conformity"/>
+          </group>
+        </group>
+      </xpath>
+
+      <xpath expr="//notebook" position="inside">
+        <page string="Meter / عداد" modifiers="{'invisible': [['x_project_type','!=','801']]}">
+
+          <group>
+            <field name="x_meter_check_ids" nolabel="1" context="{'default_task_id': active_id}">
+              <tree editable="bottom">
+                <field name="sequence" string="S.No."/>
+                <field name="description_en" string="DESCRIPTION"/>
+                <field name="answer" string="YES/NO"/>
+                <field name="statement" string="Statement / البيان"/>
+                <field name="description_ar" string="الوصف"/>
+              </tree>
+            </field>
+          </group>
+
+          <group>
+            <field name="x_remarks" placeholder="Remarks / ملاحظات..."/>
+          </group>
+
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+
+</odoo> -->
+
+
+<odoo>
+  <record id="view_task_form_inherit_qcc_meter" model="ir.ui.view">
+    <field name="name">project.task.form.inherit.qcc.meter</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id" ref="project.view_task_form2"/>
+    <field name="arch" type="xml">
+
+      <!-- Header fields after title -->
+      <xpath expr="//div[hasclass('oe_title')]" position="after">
+        <group string="QCC Header / بيانات النموذج" col="4">
+          <field name="x_project_type"/>
+          <field name="x_execution_duration_days"/>
+          <field name="x_equipment_number"/>
+          <field name="x_project_number"/>
+
+          <field name="x_coordinates"/>
+          <field name="x_branch"/>
+          <field name="x_consultant_partner_id"/>
+          <field name="x_supervisor_user_id"/>
+          <field name="x_non_conformity"/>
+        </group>
+      </xpath>
+
+      <!-- Meter page -->
+      <xpath expr="//notebook" position="inside">
+        <page string="Meter / عداد" invisible="x_project_type != '801'">
+
+          <!-- FULL WIDTH one2many (no 2-column group issue) -->
+          <group col="1">
+            <field name="x_meter_check_ids" nolabel="1" colspan="2">
+              <tree editable="bottom">
+                <field name="sequence" string="S.No."/>
+                <field name="description_en" string="DESCRIPTION"/>
+                <field name="answer" string="YES/NO"/>
+                <field name="description_ar" string="الوصف"/>
+              </tree>
+            </field>
+          </group>
+
+          <group col="1">
+            <field name="x_remarks" placeholder="Remarks / ملاحظات..."/>
+          </group>
+
+      <group col="1" string="Attachments / مرفقات">
+        <field name="x_meter_attachment_ids"
+              widget="many2many_binary"
+              options="{'accepted_file_extensions': 'jpg,jpeg,png,pdf'}"
+              nolabel="1"/>
+      </group>
+
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+</odoo>
+

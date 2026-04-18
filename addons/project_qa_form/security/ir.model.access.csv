@@ -1,0 +1,22 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_task_user,access.project.task.user,project.model_project_task,base.group_user,1,1,1,0
+
+access_meter_check_creator,access.meter.check.creator,model_project_task_meter_check,project_qa_form.group_qa_creator,1,1,1,0
+access_meter_check_validator,access.meter.check.validator,model_project_task_meter_check,project_qa_form.group_qa_validator,1,1,0,0
+access_meter_check_approver,access.meter.check.approver,model_project_task_meter_check,project_qa_form.group_qa_approver,1,0,0,0
+
+access_minipillar_check_creator,access.minipillar.check.creator,model_project_task_minipillar_check,project_qa_form.group_qa_creator,1,1,1,0
+access_minipillar_check_validator,access.minipillar.check.validator,model_project_task_minipillar_check,project_qa_form.group_qa_validator,1,1,0,0
+access_minipillar_check_approver,access.minipillar.check.approver,model_project_task_minipillar_check,project_qa_form.group_qa_approver,1,0,0,0
+
+access_trench_check_creator,access.trench.check.creator,model_project_task_trench_check,project_qa_form.group_qa_creator,1,1,1,0
+access_trench_check_validator,access.trench.check.validator,model_project_task_trench_check,project_qa_form.group_qa_validator,1,1,0,0
+access_trench_check_approver,access.trench.check.approver,model_project_task_trench_check,project_qa_form.group_qa_approver,1,0,0,0
+
+access_project_task_meter_check_data_entry,project.task.meter.check data entry,model_project_task_meter_check,project_qa_form.group_qa_data_entry,1,1,1,0
+access_project_task_minipillar_check_data_entry,project.task.minipillar.check data entry,model_project_task_minipillar_check,project_qa_form.group_qa_data_entry,1,1,1,0
+access_project_task_trench_check_data_entry,project.task.trench.check data entry,model_project_task_trench_check,project_qa_form.group_qa_data_entry,1,1,1,0
+
+access_project_task_meter_check_admin,project.task.meter.check admin,model_project_task_meter_check,base.group_system,1,1,1,1
+access_project_task_minipillar_check_admin,project.task.minipillar.check admin,model_project_task_minipillar_check,base.group_system,1,1,1,1
+access_project_task_trench_check_admin,project.task.trench.check admin,model_project_task_trench_check,base.group_system,1,1,1,1

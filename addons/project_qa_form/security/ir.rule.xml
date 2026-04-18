@@ -1,0 +1,73 @@
+<!-- <odoo>
+
+    <record id="rule_creator_own_tasks" model="ir.rule">
+        <field name="name">Creator Own Tasks</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="groups" eval="[(4, ref('project_qa_form.group_qa_creator'))]"/>
+        <field name="domain_force">[('create_uid','=',user.id)]</field>
+    </record>
+
+    <record id="rule_data_entry_assigned" model="ir.rule">
+        <field name="name">Data Entry Assigned Tasks</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="groups" eval="[(4, ref('project_qa_form.group_qa_data_entry'))]"/>
+        <field name="domain_force">[('user_id','=',user.id)]</field>
+    </record>
+
+    <record id="rule_validator" model="ir.rule">
+        <field name="name">Validator Tasks</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="groups" eval="[(4, ref('project_qa_form.group_qa_validator'))]"/>
+        <field name="domain_force">[('stage_id.name','=','To Validate')]</field>
+    </record>
+
+    <record id="rule_approver" model="ir.rule">
+        <field name="name">Approver Tasks</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="groups" eval="[(4, ref('project_qa_form.group_qa_approver'))]"/>
+        <field name="domain_force">[('stage_id.name','=','To Approve')]</field>
+    </record>
+
+</record>
+
+</odoo> -->
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data noupdate="1">
+
+    <!-- Creator sees own tasks -->
+    <record id="rule_creator_own_tasks" model="ir.rule">
+      <field name="name">Creator Own Tasks</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="groups" eval="[(4, ref('project_qa_form.group_qa_creator'))]"/>
+      <field name="domain_force">[('create_uid','=',user.id)]</field>
+    </record>
+
+    <!-- Data Entry sees assigned -->
+    <record id="rule_data_entry_assigned" model="ir.rule">
+      <field name="name">Data Entry Assigned Tasks</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="groups" eval="[(4, ref('project_qa_form.group_qa_data_entry'))]"/>
+      <field name="domain_force">[('user_id','=',user.id)]</field>
+    </record>
+
+    <!-- Validator sees To Validate -->
+    <record id="rule_validator" model="ir.rule">
+      <field name="name">Validator Tasks</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="groups" eval="[(4, ref('project_qa_form.group_qa_validator'))]"/>
+      <field name="domain_force">[('stage_id.name','=','To Validate')]</field>
+    </record>
+
+    <!-- Approver sees To Approve -->
+    <record id="rule_approver" model="ir.rule">
+      <field name="name">Approver Tasks</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="groups" eval="[(4, ref('project_qa_form.group_qa_approver'))]"/>
+      <field name="domain_force">[('stage_id.name','=','To Approve')]</field>
+    </record>
+
+  </data>
+</odoo>
